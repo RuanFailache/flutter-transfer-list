@@ -1,4 +1,4 @@
-import 'package:alura_studies/screens/transfer_list.dart';
+import 'package:alura_studies/screens/transfer/list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +13,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Alura Studies - Bytebank',
       home: TransferList(),
+      theme: ThemeData.dark(),
     );
   }
 }

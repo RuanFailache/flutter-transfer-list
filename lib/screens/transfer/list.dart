@@ -1,7 +1,9 @@
 import 'package:alura_studies/components/card_with_monetization_icon.dart';
 import 'package:alura_studies/models/transfer.dart';
-import 'package:alura_studies/screens/transfer_form.dart';
+import 'package:alura_studies/screens/transfer/form.dart';
 import 'package:flutter/material.dart';
+
+const _appBarTitle = 'Transferências';
 
 class TransferList extends StatefulWidget {
   TransferList({Key? key}) : super(key: key);
@@ -9,7 +11,7 @@ class TransferList extends StatefulWidget {
   final transfers = <Transfer>[];
 
   @override
-  State<TransferList> createState() => _TransferListState();
+  createState() => _TransferListState();
 }
 
 class _TransferListState extends State<TransferList> {
@@ -17,7 +19,7 @@ class _TransferListState extends State<TransferList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Transferências'),
+        title: const Text(_appBarTitle),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => addNewTransferToList(context),
@@ -34,14 +36,16 @@ class _TransferListState extends State<TransferList> {
   }
 
   addNewTransferToList(BuildContext context) async {
-    final receivedTransfer = await Navigator.push(
+    final Transfer? receivedTransfer = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => TransferForm(),
       ),
     );
     setState(() {
-      widget.transfers.add(receivedTransfer);
+      if (receivedTransfer != null) {
+        widget.transfers.add(receivedTransfer);
+      }
     });
   }
 }

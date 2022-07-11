@@ -2,7 +2,10 @@ class Transfer {
   final double value;
   final int accountNumber;
 
-  Transfer(this.accountNumber, this.value);
+  Transfer(
+    this.accountNumber,
+    this.value,
+  );
 
   @override
   String toString() {
